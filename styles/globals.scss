@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap');
+@import "variables.scss";
+
+html {
+  font-size: 20px;
+  background-color: map-get($palette, "lightorange");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1672px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+p {
+  margin: 0;
+  font-family: $font-family-secondary;
+  font-weight: 400;
+  color: map-get($palette, "gray");
+}
+
+h1 {
+  font-family: $font-family-primary;
+  font-weight: 400;
+  font-size: map-get($font-size, "large");
+}
+
+h2 {
+  font-family: $font-family-primary;
+  font-weight: 400;
+  font-size: map-get($font-size, "medium");
+}
+
+h3 {
+  font-family: $font-family-primary;
+  font-weight: 400;
+  font-size: map-get($font-size, "base");
+}

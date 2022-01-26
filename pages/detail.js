@@ -1,21 +1,9 @@
-import {projectsData} from "../data/projectsData"
-import styles from "../styles/pages/Home.module.scss"
 
-export default function Home() {
-
-  const renderProjects = () => (
-    projectsData.map(project => (
-      <div>
-        <img src={project.image} />
-      </div>
-    ))
-  )
-
+export default function Detail() {
   return (
     <div className="container">
-
       <div>
-        <h1>The Abstract design</h1>
+        <h1>Jean-Philippe Delberghe</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -25,10 +13,6 @@ export default function Home() {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
-      </div>
-
-      <div>
-        {renderProjects()}
       </div>
     </div>
   )
