@@ -1,0 +1,21 @@
+@use "../../styles/variables" as *;
+
+.wrapper {
+  opacity: 0.4;
+  display: flex;
+  padding: 0 10px;
+}
+
+.active {
+  opacity: 1;
+}
+
+.slide {
+  display: inline-block;
+  width: 11px;
+  height: 34px;
+  border-radius: 1.5rem;
+  background-color: map-get($palette, "lightorange");
+  box-shadow: 0 3px 6px 0 rgba(#000000, 0.16);
+  margin: 0 2px;
+}

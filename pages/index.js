@@ -1,5 +1,9 @@
-import {projectsData} from "../data/projectsData"
+import { motion  } from "framer-motion"
+
+import { projectsData } from "../data/projectsData"
+
 import styles from "../styles/pages/Home.module.scss"
+import Switch from "../components/Switch"
 
 export default function Home() {
 
@@ -14,7 +18,12 @@ export default function Home() {
   return (
     <div className="container">
 
-      <div>
+      <motion.div 
+        initial={false}
+        animate={false}
+        exit={{ x: "-100%" }}
+        transition={{ duration: .4 }}
+      >
         <h1>The Abstract design</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -25,11 +34,14 @@ export default function Home() {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
-      </div>
+      </motion.div>
+
 
       <div>
         {renderProjects()}
       </div>
+
+      <Switch />
     </div>
   )
 }
