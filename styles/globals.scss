@@ -9,6 +9,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 .container {
@@ -28,6 +29,7 @@ h1 {
   font-family: $font-family-primary;
   font-weight: 400;
   font-size: map-get($font-size, "large");
+  line-height: map-get($font-size, "large");
 }
 
 h2 {

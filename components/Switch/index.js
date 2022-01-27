@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router'
 import Link from "next/link"
 
-
 import StackIcon from "../StackIcon"
 import SliderIcon from "../SliderIcon"
 
