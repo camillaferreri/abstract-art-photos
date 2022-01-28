@@ -1,0 +1,28 @@
+@use "../../styles/variables" as *;
+
+.projectCard {
+  width: 23rem;
+  display: inline-block;
+  margin-right: 2rem;
+
+  .image {
+    border-radius: 13rem;
+    overflow: hidden;
+    height: 29rem;
+    margin-bottom: 1.5rem;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .artist {
+    text-align: center;
+    
+  }
+
+  .handle {
+    text-align: center;
+    color: map-get($palette, "lighergray");
+  }
+}
