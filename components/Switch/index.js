@@ -1,29 +1,22 @@
-import { useRouter } from 'next/router'
-import Link from "next/link"
-
 import StackIcon from "../StackIcon"
 import SliderIcon from "../SliderIcon"
 
 import styles from "./styles.module.scss"
 
-export default function Switch() {
-  const router = useRouter()
-
+export default function Switch({ layoutIsSlider, setSliderLayout, setStackLayout }) {
   return (
-    <div className={styles.switchWrapper}>
-      <Link href="/" passHref>
-        <a>
-          <StackIcon active={router.route === "/"} />
-        </a>
-      </Link>
+    <div className={styles.switchWrapper}>  
+      <StackIcon 
+        active={!layoutIsSlider} 
+        onClick={setStackLayout}
+      />
       
       <div className={styles.switchDivider} />
 
-      <Link href="/slider" passHref>
-        <a>
-          <SliderIcon active={router.route === "/slider"} />
-        </a>
-      </Link>
+      <SliderIcon 
+        active={layoutIsSlider} 
+        onClick={setSliderLayout}
+      />
     </div>
   )
 }

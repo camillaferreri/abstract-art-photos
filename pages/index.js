@@ -1,6 +1,8 @@
+import { useState, useRef, useEffect } from "react"
 import { motion, AnimateSharedLayout } from "framer-motion"
 
 import { projectsData } from "../data/projectsData"
+import { intro_text_variants } from "../animations/pages/home"
 
 import Switch from "../components/Switch"
 import ProjectCard from "../components/ProjectCard"
@@ -8,6 +10,16 @@ import ProjectCard from "../components/ProjectCard"
 import styles from "../styles/pages/Home.module.scss"
 
 export default function Home() {
+  const constraintsRef = useRef(null)
+  const [ layoutIsSlider, setLayoutIsSlider ] = useState(false)
+  const [ constraints, setConstrains ] = useState({ right: 0, left: 0 })
+
+  useEffect(() => {
+    setConstrains({
+      right: 20,
+      left: -(constraintsRef.current?.getBoundingClientRect().width - window?.innerWidth) 
+    })
+  }, [])
 
   const renderProjects = () => (
     projectsData.map((project, index) => (
@@ -16,6 +28,8 @@ export default function Home() {
         image={project.image}
         artist={project.artist}
         handle={project.handle}
+        layoutIsSlider={layoutIsSlider}
+        custom={index}
       />
     ))
   )
@@ -25,9 +39,8 @@ export default function Home() {
       <div className={styles.wrapper}>
         <motion.div 
           className={styles.introText}
-          initial={false}
-          animate={false}
-          exit={{ x: "-100%" }}
+          animate={layoutIsSlider ? "hidden" : "visible"}
+          variants={intro_text_variants}
           transition={{ duration: .8 }}
         >
           <h1 className={styles.title}>The Abstract design</h1>
@@ -42,14 +55,28 @@ export default function Home() {
           </p>
         </motion.div>
 
-        {/* <AnimateSharedLayout> */}
-          <motion.div className={styles.projectsWrapper} layout>
-            {renderProjects()}
-          </motion.div>
-        {/* </AnimateSharedLayout> */}
+        <motion.div 
+          className={styles.sliderWrapper}
+          drag="x"
+          dragConstraints={constraints}        
+        >
+          {/* <AnimateSharedLayout> */}
+            <motion.div 
+              ref={constraintsRef} 
+              className={styles.sliderContent}
+              layout
+            >
+              {renderProjects()}
+            </motion.div>
+          {/* </AnimateSharedLayout> */}
+        </motion.div>
       </div>
 
-      <Switch />
+      <Switch 
+        layoutIsSlider={layoutIsSlider}
+        setSliderLayout={() => setLayoutIsSlider(true)}
+        setStackLayout={() => setLayoutIsSlider(false)}
+      />
     </div>
   )
 }
