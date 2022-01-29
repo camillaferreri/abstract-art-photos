@@ -9,7 +9,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .container {
@@ -23,6 +23,7 @@ p {
   font-family: $font-family-secondary;
   font-weight: 400;
   color: map-get($palette, "gray");
+  line-height: 1.4rem;
 }
 
 h1 {

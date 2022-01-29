@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react"
 import { motion, AnimateSharedLayout } from "framer-motion"
 
 import { projectsData } from "../data/projectsData"
-import { intro_text_variants } from "../animations/pages/home"
+import { intro_text_variants, slider_wrapper_variants } from "../animations/pages/home"
 
 import Switch from "../components/Switch"
 import ProjectCard from "../components/ProjectCard"
@@ -17,9 +17,9 @@ export default function Home() {
   useEffect(() => {
     setConstrains({
       right: 20,
-      left: -(constraintsRef.current?.getBoundingClientRect().width - window?.innerWidth) 
+      left: -(constraintsRef.current?.getBoundingClientRect().width - window?.outerWidth) 
     })
-  }, [])
+  }, [layoutIsSlider])
 
   const renderProjects = () => (
     projectsData.map((project, index) => (
@@ -28,7 +28,6 @@ export default function Home() {
         image={project.image}
         artist={project.artist}
         handle={project.handle}
-        layoutIsSlider={layoutIsSlider}
         custom={index}
       />
     ))
@@ -36,41 +35,38 @@ export default function Home() {
 
   return (
     <div className="container">
-      <div className={styles.wrapper}>
-        <motion.div 
-          className={styles.introText}
-          animate={layoutIsSlider ? "hidden" : "visible"}
-          variants={intro_text_variants}
-          transition={{ duration: .8 }}
-        >
-          <h1 className={styles.title}>The Abstract design</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </motion.div>
+      <motion.div 
+        className={styles.introText}
+        animate={layoutIsSlider ? "hidden" : "visible"}
+        variants={intro_text_variants}
+        transition={{ duration: .8 }}
+      >
+        <h1 className={styles.title}>The Abstract design</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+          nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </motion.div>
 
+      <motion.div 
+        className={styles.sliderWrapper}
+        drag={layoutIsSlider ? "x" : false}
+        dragConstraints={layoutIsSlider ? constraints : false}
+        animate={layoutIsSlider ? "slider" : "stack"}
+        variants={slider_wrapper_variants}
+      >
         <motion.div 
-          className={styles.sliderWrapper}
-          drag="x"
-          dragConstraints={constraints}        
+          ref={constraintsRef} 
+          className={styles.sliderContent}
         >
-          {/* <AnimateSharedLayout> */}
-            <motion.div 
-              ref={constraintsRef} 
-              className={styles.sliderContent}
-              layout
-            >
-              {renderProjects()}
-            </motion.div>
-          {/* </AnimateSharedLayout> */}
+          {renderProjects()}
         </motion.div>
-      </div>
+      </motion.div>
 
       <Switch 
         layoutIsSlider={layoutIsSlider}

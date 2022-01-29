@@ -4,6 +4,7 @@
   width: 23rem;
   display: inline-block;
   margin-right: 2rem;
+  position: relative;
 
   .image {
     border-radius: 13rem;
@@ -13,6 +14,7 @@
 
     img {
       width: 100%;
+      pointer-events: none;
     }
   }
 

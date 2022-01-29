@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps, router }) {
       <title>Abstract Art Photos</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
+    
     <Menu />
 
     <AnimatePresence exitBeforeEnter>

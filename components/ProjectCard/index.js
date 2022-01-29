@@ -4,12 +4,11 @@ import { project_card_variants, detail_variants } from "../../animations/compone
 
 import styles from "./styles.module.scss"
 
-export default function ProjectCard({ image, artist, handle, layoutIsSlider, custom }) {
+export default function ProjectCard({ image, artist, handle, custom }) {
 
   return (
     <motion.div 
       className={styles.projectCard}
-      animate={layoutIsSlider ? "slider" : "stack"}
       variants={project_card_variants}
       custom={custom}
     >
