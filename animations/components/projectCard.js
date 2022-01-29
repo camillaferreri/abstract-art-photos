@@ -5,7 +5,9 @@ export const project_card_variants = {
     zIndex: -i
   }),
   slider: i => ({ 
-    zIndex: -i
+    zIndex: -i,
+    x: 0,
+    scale: 1,
   })
 }
 

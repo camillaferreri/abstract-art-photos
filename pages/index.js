@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
+import { useRouter } from "next/router"
 
 import { projectsData } from "../data/projectsData"
 import { intro_text_variants, intro_text_transition, slider_wrapper_variants, slider_wrapper_transition } from "../animations/pages/home"
@@ -10,8 +11,9 @@ import ProjectCard from "../components/ProjectCard"
 import styles from "../styles/pages/Home.module.scss"
 
 export default function Home() {
+  const router = useRouter()
   const constraintsRef = useRef(null)
-  const [ layoutIsSlider, setLayoutIsSlider ] = useState(false)
+  const [ layoutIsSlider, setLayoutIsSlider ] = useState(router.query.mode ? true : false)
   const [ constraints, setConstrains ] = useState({ right: 0, left: 0 })
 
   useEffect(() => {
@@ -24,11 +26,13 @@ export default function Home() {
   const renderProjects = () => (
     projectsData.map((project, index) => (
       <ProjectCard
-        key={index}
+        key={project.id}
+        id={project.id}
         image={project.image}
         artist={project.artist}
         handle={project.handle}
         custom={index}
+        layoutIsSlider={layoutIsSlider}
       />
     ))
   )
@@ -40,6 +44,7 @@ export default function Home() {
         animate={layoutIsSlider ? "hidden" : "visible"}
         variants={intro_text_variants}
         transition={intro_text_transition}
+        initial={false}
       >
         <h1 className={styles.title}>The Abstract design</h1>
         <p>
@@ -60,6 +65,7 @@ export default function Home() {
         animate={layoutIsSlider ? "slider" : "stack"}
         variants={slider_wrapper_variants}
         transition={slider_wrapper_transition}
+        initial={false}
       >
         <motion.div 
           ref={constraintsRef} 
