@@ -1,9 +1,11 @@
+import { motion } from "framer-motion"
 import Link from "next/link"
 import { useRouter } from "next/router"
 
 import { useProjectData } from "../utils/useProjectData"
+import { intro_text_variants, intro_text_transition } from "../animations/pages/detail"
 
-import styles from "../styles/pages/Home.module.scss"
+import styles from "../styles/pages/Detail.module.scss"
 
 export default function Detail() {
   const router = useRouter()
@@ -11,7 +13,14 @@ export default function Detail() {
 
   return (
     <div className="container">
-      <div>
+      <motion.div 
+        className={styles.introText}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+        variants={intro_text_variants}
+        transition={intro_text_transition}
+      >
         <h1>{projectData?.artist}</h1>
         <h3>{projectData?.handle}</h3>
 
@@ -32,10 +41,15 @@ export default function Detail() {
           }}
           passHref
         >
-          <a className={styles.backButton}>Back</a></Link>
-      </div>
+          <a>
+            <img src="/arrow-left.png" />Back
+          </a>
+        </Link>
+      </motion.div>
 
-      <img src={projectData?.image} />
+      <div className={styles.image}>
+        <img src={projectData?.image} />
+      </div>
     </div>
   )
 }

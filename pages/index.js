@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react"
-import { AnimatePresence, motion } from "framer-motion"
+import { motion } from "framer-motion"
 import { useRouter } from "next/router"
 
 import { projectsData } from "../data/projectsData"
@@ -46,7 +46,7 @@ export default function Home() {
         transition={intro_text_transition}
         initial={false}
       >
-        <h1 className={styles.title}>The Abstract design</h1>
+        <h1>The Abstract design</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.

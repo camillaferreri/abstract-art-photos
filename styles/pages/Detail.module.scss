@@ -1,3 +1,50 @@
-.backButton {
-  text-transform: uppercase;
+@use "../../styles/variables" as *;
+
+.introText {
+  display: inline-flex;
+  justify-content: center;
+  flex-direction: column;
+  height: calc(100vh - 80px);
+  max-width: 30vw;
+
+  h1 {
+    margin: 1.5rem 0;
+  }
+
+  h3 {
+    color: map-get($palette, "lighergray");
+  }
+
+  p {
+    margin: 3rem 0;
+  }
+  
+  a {
+    text-transform: uppercase;
+    font-family: $font-family-secondary;
+    text-decoration: none;
+    color: #000;
+  
+    img {
+      width: 1rem;
+      margin-right: .8rem;
+    }
+  }
+}
+
+.image {
+  border-radius: 10rem;
+  overflow: hidden;
+  height: 29rem;
+  width: 23rem;
+  display: inline-block;
+  position: absolute;
+  bottom: -10rem;
+  right: 15rem;
+  transform: scale(2.5);
+
+  img {
+    width: 100%;
+    pointer-events: none;
+  }
 }

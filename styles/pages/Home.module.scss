@@ -4,8 +4,11 @@
   flex-direction: column;
   height: calc(90vh - 80px);
   max-width: 28vw;
-
   position: absolute;
+
+  h1 {
+    margin: 3rem 0;
+  }
 }
 
 .sliderWrapper {
