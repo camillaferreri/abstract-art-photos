@@ -4,10 +4,34 @@ export const project_card_variants = {
     scale: -(i * .1) + 1,
     zIndex: -i
   }),
-  slider: {  }
+  slider: i => ({ 
+    zIndex: -i
+  })
+}
+
+export const project_card_transition = {
+  duration: .8,
+  ease: "easeInOut"
 }
 
 export const detail_variants = {
-  stack: { y: 300, opacity: 0 },
-  slider: { y: 0, opacity: 1 },
+  stack: { 
+    y: 300, 
+    opacity: 0,
+    transition: {
+      duration: 0.8,
+      delay: -0.4
+    }
+  },
+  slider: { 
+    y: 0, 
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+    }
+  },
+}
+
+export const detail_transition = {
+  ease: "easeInOut"
 }

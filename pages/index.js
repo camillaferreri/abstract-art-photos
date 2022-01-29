@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react"
-import { motion, AnimateSharedLayout } from "framer-motion"
+import { motion } from "framer-motion"
 
 import { projectsData } from "../data/projectsData"
-import { intro_text_variants, slider_wrapper_variants } from "../animations/pages/home"
+import { intro_text_variants, intro_text_transition, slider_wrapper_variants, slider_wrapper_transition } from "../animations/pages/home"
 
 import Switch from "../components/Switch"
 import ProjectCard from "../components/ProjectCard"
@@ -39,17 +39,17 @@ export default function Home() {
         className={styles.introText}
         animate={layoutIsSlider ? "hidden" : "visible"}
         variants={intro_text_variants}
-        transition={{ duration: .8 }}
+        transition={intro_text_transition}
       >
         <h1 className={styles.title}>The Abstract design</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-          nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-          culpa qui officia deserunt mollit anim id est laborum.
+          nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat 
+          nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt 
+          in culpa qui officia deserunt mollit anim id est laborum.
         </p>
       </motion.div>
 
@@ -59,6 +59,7 @@ export default function Home() {
         dragConstraints={layoutIsSlider ? constraints : false}
         animate={layoutIsSlider ? "slider" : "stack"}
         variants={slider_wrapper_variants}
+        transition={slider_wrapper_transition}
       >
         <motion.div 
           ref={constraintsRef} 
