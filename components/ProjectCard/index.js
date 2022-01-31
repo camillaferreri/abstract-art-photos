@@ -26,6 +26,7 @@ export default function ProjectCard({ id, image, artist, handle, custom, layoutI
         variants={project_card_variants}
         transition={project_card_transition}
         custom={custom}
+        layoutId={`image-${id}`}
       >
         <img src={image} />
       </motion.div>

@@ -12,7 +12,7 @@ export default function Detail() {
   const projectData = useProjectData(router.query.id)
 
   return (
-    <div className="container">
+    <motion.div className="container">
       <motion.div 
         className={styles.introText}
         initial="hidden"
@@ -47,9 +47,12 @@ export default function Detail() {
         </Link>
       </motion.div>
 
-      <div className={styles.image}>
+      <motion.div 
+        className={styles.image} 
+        layoutId={`image-${projectData?.id}`}
+      >
         <img src={projectData?.image} />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }

@@ -6,6 +6,7 @@
   flex-direction: column;
   height: calc(100vh - 80px);
   max-width: 30vw;
+  position: absolute;
 
   h1 {
     margin: 1.5rem 0;
@@ -33,15 +34,15 @@
 }
 
 .image {
-  border-radius: 10rem;
+  border-radius: 28rem;
   overflow: hidden;
-  height: 29rem;
-  width: 23rem;
+  height: 130vh;
+  width: 63vw;
+  max-width: 1080px;
   display: inline-block;
   position: absolute;
-  bottom: -10rem;
-  right: 15rem;
-  transform: scale(2.5);
+  top: 30vh;
+  right: -5vw;
 
   img {
     width: 100%;
