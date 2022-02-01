@@ -10,7 +10,7 @@ import ProjectCard from "../components/ProjectCard"
 
 import styles from "../styles/pages/Home.module.scss"
 
-export default function Home() {
+const Home = (props) => {
   const router = useRouter()
   const constraintsRef = useRef(null)
   const [ layoutIsSlider, setLayoutIsSlider ] = useState(router.query.mode ? true : false)
@@ -27,13 +27,13 @@ export default function Home() {
     e.preventDefault()
     if (!layoutIsSlider) return;
     router.push({
-      pathname: "/detail", 
+      pathname: "/projects/[id]", 
       query: { id: id }
     })
   }
 
   const renderProjects = () => (
-    projectsData.map((project, index) => (
+    props.projects.map((project, index) => (
       <ProjectCard
         key={project.id}
         id={project.id}
@@ -93,3 +93,11 @@ export default function Home() {
     </div>
   )
 }
+
+Home.getInitialProps = async function() {
+  return {
+    projects: projectsData
+  };
+};
+
+export default Home;

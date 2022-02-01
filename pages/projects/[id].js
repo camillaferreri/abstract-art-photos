@@ -1,16 +1,12 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { useRouter } from "next/router"
 
-import { useProjectData } from "../utils/useProjectData"
-import { intro_text_variants, intro_text_transition } from "../animations/pages/detail"
+import { useProjectData } from "../../utils/useProjectData"
+import { intro_text_variants, intro_text_transition } from "../../animations/pages/detail"
 
-import styles from "../styles/pages/Detail.module.scss"
+import styles from "../../styles/pages/Detail.module.scss"
 
-export default function Detail() {
-  const router = useRouter()
-  const projectData = useProjectData(router.query.id)
-
+const Detail = ({ project }) => {
   return (
     <motion.div className="container">
       <motion.div 
@@ -21,8 +17,8 @@ export default function Detail() {
         variants={intro_text_variants}
         transition={intro_text_transition}
       >
-        <h1>{projectData?.artist}</h1>
-        <h3>{projectData?.handle}</h3>
+        <h1>{project?.artist}</h1>
+        <h3>{project?.handle}</h3>
 
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -49,10 +45,19 @@ export default function Detail() {
 
       <motion.div 
         className={styles.image} 
-        layoutId={`image-${projectData?.id}`}
+        layoutId={`image-${project?.id}`}
       >
-        <img src={projectData?.image} />
+        <img src={project?.image} />
       </motion.div>
     </motion.div>
   )
 }
+
+Detail.getInitialProps = async function(context) {
+  const { id } = context.query;
+  return {
+    project: useProjectData(id)
+  };
+};
+
+export default Detail;
