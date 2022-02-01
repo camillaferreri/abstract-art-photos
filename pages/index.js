@@ -41,7 +41,6 @@ const Home = (props) => {
         artist={project.artist}
         handle={project.handle}
         custom={index}
-        layoutIsSlider={layoutIsSlider}
         onClick={(e) => goProjectDetail(e, project.id)}
       />
     ))

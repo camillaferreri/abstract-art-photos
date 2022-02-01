@@ -15,9 +15,9 @@
   display: inline-flex;
   align-items: center;
   height: calc(100vh - 80px);
-}
-
-.sliderContent {
-  white-space: nowrap;
-  display: inline-block;
+  
+  .sliderContent {
+    white-space: nowrap;
+    display: inline-block;
+  }
 }

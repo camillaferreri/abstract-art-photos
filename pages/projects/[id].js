@@ -37,15 +37,14 @@ const Detail = ({ project }) => {
           }}
           passHref
         >
-          <a>
-            <img src="/arrow-left.png" />Back
-          </a>
+          <a><img src="/arrow-left.png" />Back</a>
         </Link>
       </motion.div>
 
       <motion.div 
         className={styles.image} 
         layoutId={`image-${project?.id}`}
+        transition={{ duration: 0.4 }}
       >
         <img src={project?.image} />
       </motion.div>

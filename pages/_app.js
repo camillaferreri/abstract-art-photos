@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 
 import Menu from '../components/Menu'
 

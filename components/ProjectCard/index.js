@@ -4,7 +4,7 @@ import { project_card_variants, project_card_transition, detail_variants, detail
 
 import styles from "./styles.module.scss"
 
-export default function ProjectCard({ id, image, artist, handle, custom, layoutIsSlider, onClick }) {
+export default function ProjectCard({ id, image, artist, handle, custom, onClick }) {
   return (
     <motion.div 
       className={styles.projectCard}
