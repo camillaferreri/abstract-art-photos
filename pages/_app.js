@@ -15,9 +15,7 @@ function MyApp({ Component, pageProps, router }) {
     <Menu />
 
     <AnimatePresence exitBeforeEnter>
-      <motion.div key={router.route} >
-        <Component {...pageProps} />
-      </motion.div>
+      <Component {...pageProps} key={router.route} />
     </AnimatePresence>
   </>
 }
