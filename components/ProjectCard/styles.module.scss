@@ -4,6 +4,7 @@
   width: 23rem;
   display: inline-block;
   margin-right: 2rem;
+  position: relative;
   
   .image {
     border-radius: 13rem;
@@ -15,6 +16,30 @@
     img {
       width: 100%;
       pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+  }
+
+  .image_layout {
+    border-radius: 13rem;
+    overflow: hidden;
+    height: 29rem;
+    margin-bottom: 1.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    img {
+      width: 100%;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
     }
   }
 

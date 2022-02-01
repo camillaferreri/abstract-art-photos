@@ -9,8 +9,8 @@ export const intro_text_transition = {
 }
 
 export const slider_wrapper_variants = {
-  slider: { x: 0, cursor: "pointer" },
-  stack: { x: "33vw", cursor: "auto" },
+  slider: { marginLeft: 0, cursor: "pointer" },
+  stack: { marginLeft: "33vw", cursor: "auto" },
 }
 
 export const slider_wrapper_transition = {

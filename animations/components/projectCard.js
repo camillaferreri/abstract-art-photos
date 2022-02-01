@@ -2,7 +2,7 @@ export const project_card_variants = {
   stack: i => ({ 
     x: (-i * 310) - ((i - 1) * (i * 10)),
     scale: -(i * .1) + 1,
-    zIndex: -i
+    zIndex: -i,
   }),
   slider: i => ({ 
     x: 0,
