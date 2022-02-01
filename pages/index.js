@@ -23,6 +23,15 @@ export default function Home() {
     })
   }, [layoutIsSlider])
 
+  const goProjectDetail = (e, id) => {
+    e.preventDefault()
+    if (!layoutIsSlider) return;
+    router.push({
+      pathname: "/detail", 
+      query: { id: id }
+    })
+  }
+
   const renderProjects = () => (
     projectsData.map((project, index) => (
       <ProjectCard
@@ -33,6 +42,7 @@ export default function Home() {
         handle={project.handle}
         custom={index}
         layoutIsSlider={layoutIsSlider}
+        onClick={(e) => goProjectDetail(e, project.id)}
       />
     ))
   )

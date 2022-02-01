@@ -1,25 +1,14 @@
 import { motion } from "framer-motion"
-import { useRouter } from "next/router"
 
 import { project_card_variants, project_card_transition, detail_variants, detail_transition } from "../../animations/components/projectCard"
 
 import styles from "./styles.module.scss"
 
-export default function ProjectCard({ id, image, artist, handle, custom, layoutIsSlider }) {
-  const router = useRouter()
-
-  const goProjectDetail = () => {
-    if (!layoutIsSlider) return;
-    router.push({
-      pathname: "/detail", 
-      query: { id: id }
-    })
-  }
-
+export default function ProjectCard({ id, image, artist, handle, custom, layoutIsSlider, onClick }) {
   return (
     <motion.div 
       className={styles.projectCard}
-      onClick={goProjectDetail}
+      onClick={onClick}
     >
       <motion.div 
         className={styles.image}
